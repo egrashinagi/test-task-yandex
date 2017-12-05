@@ -1,0 +1,84 @@
+$diameter: 200px;
+$accent: red;
+$gray: gray;
+$progress: 270; // Угол
+$border: 10px;
+.progress {
+  position: relative;
+  width: $diameter;
+  height: $diameter;
+  border-radius: 50%;
+  background-color: $accent;
+  &::before {
+    position: absolute;
+    content: '';
+    @if $progress > 180 {
+      background-color: $accent;
+    }
+    @if $progress <= 180 {
+      background-color: $gray;
+    }
+    width: $diameter;
+    height: $diameter;
+    border-radius: 50%;
+    clip: rect(0, #{$diameter/2}, $diameter, 0);
+    transform-origin: 50% 50%;
+    @if $progress <= 180 {
+      transform: rotate(#{180 + $progress}deg);
+    }
+    @if $progress > 180 {
+      transform: rotate(#{180 + $progress - 180}deg);
+    }
+    z-index: 1;
+  }
+  &::after {
+    position: absolute;
+    content: '';
+    background-color: $gray;
+    width: $diameter;
+    height: $diameter;
+    border-radius: 50%;
+    clip: rect(0, #{$diameter/2}, $diameter, 0);
+    transform-origin: 50% 50%;
+    transform: rotate(0deg);
+  }
+  .center {
+    position: absolute;
+    top: $border;
+    left: $border;
+    width: #{$diameter - 2 * $border};
+    height: #{$diameter - 2 * $border};
+    background-color: white;
+    border-radius: 50%;
+    z-index: 2;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.value {
+  display: flex;
+
+  justify-content: center;
+
+  .value__number {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 40%;
+
+    padding: 3px 5px;
+  }
+
+  .value__text {
+    display: flex;
+    align-items: center;
+
+    padding: 3px;
+  }
+}
+

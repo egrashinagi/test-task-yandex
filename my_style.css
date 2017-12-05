@@ -1,0 +1,83 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: #fff;
+}
+
+.progress {
+    display: flex;
+    justify-content: center;
+
+    position: relative;
+    width: 200px;
+    height: 200px;
+
+    border-radius: 50%;
+    background-color: #ffdb23;
+}
+
+.progress .progress__center {
+    display: flex;
+    align-items: center;
+
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 180px;
+    height: 180px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.value {
+    display: flex;
+    justify-content: center;
+}
+
+.value .value__number {
+    display: flex;
+    align-items: center;
+
+    border: 1px solid black;
+    border-radius: 40%;
+    padding: 3px 5px;
+}
+
+.value .value__text {
+    display: flex;
+    align-items: center;
+    padding: 3px;
+}
+
+.progress::before {
+    position: absolute;
+    content: '';
+    background-color:#ffdb23;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    clip: rect(0, 100px, 200px, 0);
+    transform-origin: 50% 50%;
+    transform: rotate(270deg);
+    z-index: 1;
+}
+
+.progress::after {
+    position: absolute;
+    content: '';
+    background-color: lightgray;
+
+    width: 200px;
+    height: 200px;
+
+    border-radius: 50%;
+    z-index: 2;
+}
+
+
+
+
+
